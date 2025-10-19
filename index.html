@@ -134,112 +134,89 @@
             box-shadow: 0 15px 40px rgba(0, 136, 204, 0.5);
         }
 
-        /* Popup Modal */
-        .modal {
-            display: block;
+        /* Alert Popup Overlay */
+        .alert-overlay {
+            display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
         }
 
-        .modal.hidden {
-            display: none !important;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            margin: 10% auto;
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
-            animation: slideDown 0.4s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-content h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #00d4ff, #00ff88);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .modal-content p {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-        }
-
-        .button-group {
+        .alert-overlay.active {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
         }
 
-        .btn {
-            padding: 15px 30px;
-            font-size: 1.1em;
-            font-weight: 600;
+        /* Alert Box */
+        .alert-box {
+            background: #3d3d3d;
+            border-radius: 16px;
+            padding: 0;
+            max-width: 320px;
+            width: 88%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .alert-content {
+            padding: 28px 28px 24px 28px;
+        }
+
+        .alert-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 18px;
+            line-height: 1.3;
+            font-family: 'Roboto', 'Poppins', sans-serif;
+        }
+
+        .alert-message {
+            font-size: 16px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.87);
+            line-height: 1.5;
+            margin-bottom: 0;
+            font-family: 'Roboto', 'Poppins', sans-serif;
+        }
+
+        .alert-buttons {
+            display: flex;
+            justify-content: flex-end;
+            padding: 8px;
+        }
+
+        .alert-btn {
+            padding: 12px 18px;
             border: none;
-            border-radius: 50px;
+            background: transparent;
+            color: #4db6ac;
+            font-size: 15px;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-family: 'Poppins', sans-serif;
+            transition: background 0.2s ease;
+            font-family: 'Roboto', 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            margin-left: 8px;
         }
 
-        .btn-join {
-            background: linear-gradient(45deg, #00d4ff, #0099ff);
-            color: #fff;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        .alert-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        .btn-join:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        .alert-btn:active {
+            background: rgba(255, 255, 255, 0.12);
         }
 
-        .btn-already {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-already:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        .telegram-icon {
-            display: inline-block;
-            margin-right: 8px;
-            font-size: 1.3em;
+        .alert-btn.primary {
+            color: #4db6ac;
         }
 
         @media (max-width: 768px) {
@@ -247,32 +224,28 @@
                 font-size: 2em;
             }
 
-            .modal-content {
-                margin: 20% auto;
-                padding: 30px 20px;
-                max-width: 90%;
-            }
-
             #contentFrame {
                 height: 300px;
                 min-height: 250px;
+            }
+
+            .alert-box {
+                max-width: 320px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Popup Modal -->
-    <div id="supportModal" class="modal">
-        <div class="modal-content">
-            <h2>🏏 Support Us!</h2>
-            <p>Join our Telegram channel to get updates on live matches and support free cricket streaming!</p>
-            <div class="button-group">
-                <a href="https://t.me/+H4SNbEBhYfA1Mzg1" target="_blank" class="btn btn-join">
-                    <span class="telegram-icon">📱</span> JOIN TELEGRAM
-                </a>
-                <button onclick="closeModal()" class="btn btn-already">
-                    ✓ ALREADY JOINED
-                </button>
+    <!-- Alert Popup (Android-style) -->
+    <div id="alertPopup" class="alert-overlay">
+        <div class="alert-box">
+            <div class="alert-content">
+                <div class="alert-title">KOHLITY says</div>
+                <div class="alert-message">Joined Our Telegram to get Future Matches Free Links?</div>
+            </div>
+            <div class="alert-buttons">
+                <button class="alert-btn" onclick="closeAlert()">Cancel</button>
+                <button class="alert-btn primary" onclick="acceptAlert()">OK</button>
             </div>
         </div>
     </div>
@@ -310,25 +283,26 @@
     </div>
     
     <script>
-        const modal = document.getElementById('supportModal');
+        const alertPopup = document.getElementById('alertPopup');
 
-        // Close modal function
-        function closeModal() {
-            modal.style.display = 'none';
-            modal.classList.add('hidden');
+        // Alert popup functions
+        function showAlert() {
+            alertPopup.classList.add('active');
         }
 
-        // Show popup every time on page load/reload
-        window.onload = function() {
-            modal.style.display = 'block';
-            modal.classList.remove('hidden');
-        };
+        function closeAlert() {
+            alertPopup.classList.remove('active');
+        }
 
-        // Prevent closing modal by clicking outside
-        modal.onclick = function(event) {
-            if (event.target === modal) {
-                event.stopPropagation();
-            }
+        function acceptAlert() {
+            // Redirect to Telegram when OK is clicked
+            window.open('https://t.me/+H4SNbEBhYfA1Mzg1', '_blank');
+            closeAlert();
+        }
+
+        // Show alert popup immediately on page load
+        window.onload = function() {
+            showAlert();
         };
     </script>
 </body>
