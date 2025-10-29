@@ -6,19 +6,13 @@
     <title>Kohlity - Free Cricket Streaming</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             color: #fff;
             min-height: 100vh;
         }
-
         .header {
             background: rgba(0, 0, 0, 0.3);
             padding: 20px;
@@ -26,7 +20,6 @@
             backdrop-filter: blur(10px);
             border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
-
         .logo {
             font-size: 2.5em;
             font-weight: 700;
@@ -35,19 +28,8 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
         }
-
-        .tagline {
-            font-size: 0.9em;
-            color: #00ff88;
-            margin-top: 5px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
+        .tagline { font-size: 0.9em; color: #00ff88; margin-top: 5px; }
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
         .video-container {
             position: relative;
             background: #000;
@@ -56,7 +38,6 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             margin-bottom: 30px;
         }
-
         #contentFrame {
             width: 100%;
             height: 600px;
@@ -64,7 +45,6 @@
             display: block;
             border: none;
         }
-
         .live-badge {
             position: absolute;
             top: 20px;
@@ -81,7 +61,6 @@
             animation: pulse 2s infinite;
             z-index: 10;
         }
-
         .live-dot {
             width: 10px;
             height: 10px;
@@ -89,17 +68,8 @@
             border-radius: 50%;
             animation: blink 1.5s infinite;
         }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
+        @keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
+        @keyframes blink { 0%,100%{opacity:1;}50%{opacity:.3;} }
         .info-section {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
@@ -108,13 +78,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
         }
-
-        .info-section h2 {
-            color: #00ff88;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-        }
-
+        .info-section h2 { color: #00ff88; margin-bottom: 20px; font-size: 1.5em; }
         .telegram-btn {
             display: inline-block;
             padding: 15px 40px;
@@ -128,115 +92,66 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 136, 204, 0.3);
         }
-
         .telegram-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(0, 136, 204, 0.5);
         }
-
-        /* Alert Popup Overlay */
         .alert-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0;left: 0;
+            width: 100%;height: 100%;
             background: rgba(0, 0, 0, 0.5);
             z-index: 9999;
             justify-content: center;
             align-items: center;
         }
-
-        .alert-overlay.active {
-            display: flex;
-        }
-
-        /* Alert Box */
+        .alert-overlay.active { display: flex; }
         .alert-box {
             background: #3d3d3d;
             border-radius: 16px;
             padding: 0;
             max-width: 320px;
             width: 88%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
             overflow: hidden;
         }
-
-        .alert-content {
-            padding: 28px 28px 24px 28px;
-        }
-
+        .alert-content { padding: 28px 28px 24px 28px; }
         .alert-title {
             font-size: 18px;
             font-weight: 500;
-            color: #fff;
             margin-bottom: 18px;
             line-height: 1.3;
-            font-family: 'Roboto', 'Poppins', sans-serif;
         }
-
         .alert-message {
             font-size: 16px;
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.87);
             line-height: 1.5;
             margin-bottom: 0;
-            font-family: 'Roboto', 'Poppins', sans-serif;
         }
-
         .alert-buttons {
             display: flex;
             justify-content: flex-end;
             padding: 8px;
         }
-
         .alert-btn {
             padding: 12px 18px;
-            border: none;
             background: transparent;
             color: #4db6ac;
             font-size: 15px;
             font-weight: 500;
             cursor: pointer;
-            transition: background 0.2s ease;
-            font-family: 'Roboto', 'Poppins', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             border-radius: 4px;
             margin-left: 8px;
+            text-transform: uppercase;
         }
-
-        .alert-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .alert-btn:active {
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .alert-btn.primary {
-            color: #4db6ac;
-        }
-
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2em;
-            }
-
-            #contentFrame {
-                height: 300px;
-                min-height: 250px;
-            }
-
-            .alert-box {
-                max-width: 320px;
-            }
+            .logo { font-size: 2em; }
+            #contentFrame { height: 300px; min-height: 250px; }
         }
     </style>
 </head>
 <body>
-    <!-- Alert Popup (Android-style) -->
+
     <div id="alertPopup" class="alert-overlay">
         <div class="alert-box">
             <div class="alert-content">
@@ -250,60 +165,42 @@
         </div>
     </div>
 
-    <!-- Header -->
     <div class="header">
         <div class="logo">KOHLITY</div>
         <div class="tagline">Free Cricket Streaming - Live & HD</div>
     </div>
 
-    <!-- Main Content -->
     <div class="container">
         <div class="video-container">
             <div class="live-badge">
-                <div class="live-dot"></div>
-                LIVE
+                <div class="live-dot"></div> LIVE
             </div>
             <iframe id="contentFrame"
                     sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"
                     frameborder="0"
-                    gesture="media"
                     allow="encrypted-media"
                     allowfullscreen="true"
                     scrolling="no"
-                    src="https://cricketstan.github.io/channel-10">
+                    src="https://cricketstan.github.io/TNT-1/">
             </iframe>
         </div>
 
         <div class="info-section">
             <h2>Join Our Telegram For Future Matches Free Links</h2>
-            <a href="https://t.me/+H4SNbEBhYfA1Mzg1" target="_blank" class="telegram-btn">
-                📱 TELEGRAM
-            </a>
+            <a href="https://t.me/+H4SNbEBhYfA1Mzg1" target="_blank" class="telegram-btn">📱 TELEGRAM</a>
         </div>
     </div>
-    
+
     <script>
         const alertPopup = document.getElementById('alertPopup');
-
-        // Alert popup functions
-        function showAlert() {
-            alertPopup.classList.add('active');
-        }
-
-        function closeAlert() {
-            alertPopup.classList.remove('active');
-        }
-
-        function acceptAlert() {
-            // Redirect to Telegram when OK is clicked
-            window.open('https://t.me/+H4SNbEBhYfA1Mzg1', '_blank');
+        function showAlert(){ alertPopup.classList.add('active'); }
+        function closeAlert(){ alertPopup.classList.remove('active'); }
+        function acceptAlert(){
+            window.open('https://t.me/+H4SNbEBhYfA1Mzg1','_blank');
             closeAlert();
         }
-
-        // Show alert popup immediately on page load
-        window.onload = function() {
-            showAlert();
-        };
+        window.onload = function(){ showAlert(); };
     </script>
+
 </body>
 </html>
